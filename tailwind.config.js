@@ -8,10 +8,23 @@ export default {
   theme: {
     extend: {
       colors:{
+        gray:{
+          200:"#e0e2e3", //background
+          600: "#3b4146" //text color
+
+        },
         purple:{
-          300 : "#e0e7ff",
-          500 : "#524cb3",
-          600 : "#5046e4",
+          200 : "#e0e7ff", //secondary button color
+          500 : "#8331d5", //secondary button text
+          600 : "#5046e4", //primary button color
+        },
+        blue:{
+          100:"#edf2fe" //tag background
+        },
+        slate:{
+          700: {
+            opaque: 'rgba(51, 65, 85, 0.7)'
+          }
         }
       }
     },
