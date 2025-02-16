@@ -9,7 +9,7 @@ export default {
     extend: {
       colors:{
         gray:{
-          200:"#e0e2e3", //background
+          200:"#f2f3f3", //background
           600: "#3b4146" //text color
 
         },

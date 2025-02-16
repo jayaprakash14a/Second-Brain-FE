@@ -1,11 +1,7 @@
-import { useEffect, useInsertionEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { CrossIcon } from "../Icons/CrossIcon";
 import { Button } from "./Button";
-
-interface inputModel {
-    onChange: () => void,
-    placeholder: string
-}
+import { CustomInput } from "./CustomInput";
 
 export function CreateContentModal({ open, onClose }) {
 
@@ -35,8 +31,8 @@ export function CreateContentModal({ open, onClose }) {
                         <CrossIcon onClick={onClose} aria-label="Close Modal" />
                     </div>
                     <div className="py-2 flex flex-col gap-2">
-                        <Input placeholder="Enter title" onChange={() => { }} />
-                        <Input placeholder="Provide link" onChange={() => { }} />
+                        <CustomInput placeholder="Enter title" onChange={() => { }} />
+                        <CustomInput placeholder="Provide link" onChange={() => { }} />
                         <Button variant="Primary" text="Submit" size="md" onClick={() => { }} />
                     </div>
                 </div>
@@ -46,7 +42,3 @@ export function CreateContentModal({ open, onClose }) {
 
 }
 
-function Input(props: inputModel) {
-
-    return <input type="text" placeholder={props.placeholder} onChange={props.onChange} className="px-4 py-2 rounded-md border border-gray-300" />
-}
