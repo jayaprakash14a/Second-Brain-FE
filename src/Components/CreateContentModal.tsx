@@ -59,8 +59,8 @@ export function CreateContentModal({ open, onClose }) {
 
     return <div>
         {open &&
-            <div className="w-screen h-screen bg-slate-700-opaque fixed top-0 left-0 flex justify-center items-center z-2">
-                <div className="bg-white p-4 flex flex-col justify-center h-fit rounded-md" ref={modalRef} role="dialog" aria-modal="true">
+            <div className="w-screen h-screen bg-slate-700-opaque dark:bg-slate-800-opaque fixed top-0 left-0 flex justify-center items-center z-2">
+                <div className="py-4 px-8 w-3/12 flex flex-col justify-center h-fit rounded-md bg-gray-200 dark:bg-slate-950 dark:text-gray-100 gap-4" ref={modalRef} role="dialog" aria-modal="true">
                     <div className="flex justify-end">
                         <CrossIcon onClick={onClose} aria-label="Close Modal" />
                     </div>
@@ -68,7 +68,7 @@ export function CreateContentModal({ open, onClose }) {
                         <CustomInput placeholder="Enter title"  ref={titleRef}/>
                         <CustomInput placeholder="Provide link"  ref={linkRef} />
                         <div className="flex flex-col items-center my-4">
-                            <div className="flex gap-2">
+                            <div className="flex gap-8">
                                 <Button variant={`${(type === ContentType.Youtube) ? "Primary" : "Secondary"}`} text="Youtube" size="md" startIcon={<Youtube size="md"/>} onClick={()=>{
                                     setType(ContentType.Youtube)
                                 }} />

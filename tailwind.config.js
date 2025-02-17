@@ -25,7 +25,8 @@ export default {
           700: {
             opaque: 'rgba(51, 65, 85, 0.7)'
           },
-          800: "#1e2732" // grayish bg for app components
+          800: "#1e2732", // grayish bg for app components
+          
         }
       }
     },

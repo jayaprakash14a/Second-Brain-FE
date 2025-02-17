@@ -11,8 +11,9 @@ interface CardProps {
     title: string,
     link: string,
     type: content,
-    shared: boolean
-
+    shared: boolean,
+    onDelete:(contentId:Number)=>void,
+    _id:Number
 }
 
 
@@ -37,14 +38,15 @@ export const Card = (props: CardProps) => {
                     {props.title}
                 </div>
                 <div className="flex items-center text-gray-500 dark:text-gray-100 gap-2">
-                    <a href={props.link} target="_blank">
+                    <a href={props.link} target="_blank" className="cursor-pointer">
                         <ShareIcon size="md" />
                     </a>
-                    { !props.shared && <TrashIcon size="md" />}
+                    {!props.shared && <a className="cursor-pointer" onClick={()=>{
+                        props.onDelete(props._id) 
+                        }}><TrashIcon size="md" /></a> }
                 </div>
             </div>
             <div className="pt-4">
-
                 {props.type === "youtube" ?
                     <div className="dark:bg-slate-800 p-4 rounded-lg border border-gray-300 dark:border-red-300 my-2.5">
                         <iframe className="w-full" src={props.link.replace("watch?v=", "embed/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>

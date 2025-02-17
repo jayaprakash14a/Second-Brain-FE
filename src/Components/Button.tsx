@@ -5,7 +5,7 @@ type Variants = "Primary" | "Secondary";
 export interface ButtonProps {
     variant: Variants,
     size: "sm" | "md" | "lg",
-    text: string,
+    text?: string,
     startIcon?: ReactElement,
     endIcon?: ReactElement,
     onClick: () => void,
@@ -21,8 +21,9 @@ const sizeStyle = {
     "lg": "py-4 px-6"
 }
 const variantStyles = {
-    "Primary": "bg-purple-600 text-white rounded dark:bg-amber-600",
-    "Secondary": "bg-purple-200 text-purple-500 dark:text-amber-600 dark:bg-slate-950 dark:border dark:border-amber-600"
+    "Primary": "bg-purple-600 text-white rounded dark:bg-amber-600 dark:text-slate-950",
+    "Secondary": "bg-purple-200 text-purple-500 dark:text-amber-600 dark:bg-slate-950 dark:border dark:border-amber-600",
+    "transparent":"bg-transparent dark:text-amber-600"
 }
 
 

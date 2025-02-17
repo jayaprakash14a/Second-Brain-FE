@@ -7,5 +7,5 @@ interface inputModel {
 
 export function CustomInput(props: inputModel) {
 
-    return <input type="text" placeholder={props.placeholder} onChange={props.onChange} className="px-4 py-2 rounded-md border border-gray-300" ref={props.ref}/>
+    return <input type="text" placeholder={props.placeholder} onChange={props.onChange} className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-950" ref={props.ref}/>
 }

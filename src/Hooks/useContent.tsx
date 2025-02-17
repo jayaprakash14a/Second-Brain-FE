@@ -5,6 +5,7 @@ import axios from "axios";
 
 export function useContent(){
     const [contents, setContents] = useState([]);
+    const [username, setUsername] = useState("");
     
     function refresh(){
         axios.get(`${BACKEND_URL}/api/v1/content`,{
@@ -13,12 +14,13 @@ export function useContent(){
             }
         }).then((response)=>{
             setContents(response.data.content);
+            setUsername(response.data.username);
         })
     }
     useEffect(()=>{
         refresh();
     },[])
 
-    return {contents, refresh};
+    return {username, contents, refresh};
 
 }
