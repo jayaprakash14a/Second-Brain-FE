@@ -6,7 +6,7 @@ interface ItemModel {
 }
 
 export function SideBarItem ( props: ItemModel){
-    return <div className="flex items-center text-gray-700">
+    return <div className="flex items-center">
         <div className="p-2">
         {props.icon}
         </div>

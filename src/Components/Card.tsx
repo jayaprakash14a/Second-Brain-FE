@@ -1,40 +1,57 @@
 // import { ReactElement } from "react"
 
-import { ReactElement } from "react"
 import { ShareIcon } from "../Icons/ShareIcon";
+import { TrashIcon } from "../Icons/TrashIcon";
+import { Twitter } from "../Icons/Twitter";
+import { Youtube } from "../Icons/Youtube";
 
-type content = "Twitter" | "Youtube" | "Text";
+type content = "twitter" | "youtube" | "text";
 
 interface CardProps {
     title: string,
-    icon: ReactElement,
     link: string,
     type: content,
+    shared: boolean
 
 }
 
+
+
 export const Card = (props: CardProps) => {
 
+    const CardIcon = () => {
+        return <>
+            {
+                props.type === "youtube" ? <Youtube size="lg" /> :
+                    props.type === "twitter" ? <Twitter size="lg" /> :
+                        <ShareIcon size="md" />
+            }
+        </>
+    }
+
     return <>
-        <div className="p-4 bg-white rounded-md border border-gray-300 max-w-96 h-full">
+        <div className="p-4 bg-white dark:bg-gray-950 rounded-lg border border-gray-300 dark:border-gray-600 h-full min-w-64 max-w-sm">
             <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2 font-sm">
-                    <ShareIcon size="md" />
+                <div className="flex items-center gap-2 text-lg font-bold dark:text-gray-100">
+                    <CardIcon />
                     {props.title}
                 </div>
-                <div className="flex items-center text-gray-500 gap-2">
+                <div className="flex items-center text-gray-500 dark:text-gray-100 gap-2">
                     <a href={props.link} target="_blank">
                         <ShareIcon size="md" />
                     </a>
-                    <ShareIcon size="md" />
+                    { !props.shared && <TrashIcon size="md" />}
                 </div>
             </div>
             <div className="pt-4">
-                {props.type === "Youtube" ?
-                    <iframe className="w-full" src={props.link.replace("watch","embed")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+                {props.type === "youtube" ?
+                    <div className="dark:bg-slate-800 p-4 rounded-lg border border-gray-300 dark:border-red-300 my-2.5">
+                        <iframe className="w-full" src={props.link.replace("watch?v=", "embed/")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    </div>
                     :
-                    <blockquote className="twitter-tweet">
-                        <a href={props.link.replace("x.com", "twitter.com")}></a>
+                    <blockquote className="twitter-tweet" data-theme="dark" data-dnt="true">
+                        <a href={`https://twitter.com/user/status/${props.link.slice(props.link.lastIndexOf("/") + 1)}`}>Loading tweet....</a>
                     </blockquote>
                 }
             </div>

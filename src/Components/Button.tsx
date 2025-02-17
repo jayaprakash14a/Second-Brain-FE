@@ -13,7 +13,7 @@ export interface ButtonProps {
     loading?: boolean
 }
 
-const defaultStyles = "rounded flex justify-center items-center";
+const defaultStyles = "rounded flex justify-center items-center cursor-pointer";
 
 const sizeStyle = {
     "sm": "py-1 px-2",
@@ -21,8 +21,8 @@ const sizeStyle = {
     "lg": "py-4 px-6"
 }
 const variantStyles = {
-    "Primary": "bg-purple-600 text-white rounded",
-    "Secondary": "bg-purple-200 text-purple-500"
+    "Primary": "bg-purple-600 text-white rounded dark:bg-amber-600",
+    "Secondary": "bg-purple-200 text-purple-500 dark:text-amber-600 dark:bg-slate-950 dark:border dark:border-amber-600"
 }
 
 
