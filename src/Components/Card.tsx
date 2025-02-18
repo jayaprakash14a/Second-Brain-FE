@@ -4,16 +4,17 @@ import { ShareIcon } from "../Icons/ShareIcon";
 import { TrashIcon } from "../Icons/TrashIcon";
 import { Twitter } from "../Icons/Twitter";
 import { Youtube } from "../Icons/Youtube";
+import { ContentType } from "../interface";
 
-type content = "twitter" | "youtube" | "text";
+// type content = "twitter" | "youtube" | "text";
 
 interface CardProps {
     title: string,
     link: string,
-    type: content,
+    type: ContentType,
     shared: boolean,
-    onDelete:(contentId:Number)=>void,
-    _id:Number
+    onDelete:(contentId:string)=>void,
+    _id: string
 }
 
 

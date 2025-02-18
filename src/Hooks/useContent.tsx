@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { BACKEND_URL } from "../config";
 import axios from "axios";
+import { Content } from "../interface";
 
 
 
 export function useContent(){
-    const [contents , setContents] = useState([]);
+    const [contents , setContents] = useState<Content[]>([]);
     const [username, setUsername] = useState("");
     
     function refresh(){

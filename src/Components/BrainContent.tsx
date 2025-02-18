@@ -11,10 +11,10 @@ export const BrainContent = (props : ContentsModel) => {
                             {/* <Card link='https://www.youtube.com/watch?v=UaGJdSUA_RM' type='youtube' title='Praboss'  /> */}
 
             {props.contents.filter(({ link, title, type }) => link != null && title != null && type != null).map(({ link, title, type, _id }) =>
-                <Card key={_id} link={link} title={title} type={type} shared={props.shared} onDelete={props.onDelete} _id={_id}/>)
+                <Card key={_id + 'key'} link={link} title={title} type={type} shared={props.shared} onDelete={props.onDelete} _id={_id}/>)
             }
 
-            {/* {JSON.stringify(contents.filter(({link, title, type})=> link != null && title != null && type != null))} */}
+            {JSON.stringify(props.contents.filter(({link, title, type})=> link != null && title != null && type != null))}
         </div>
     </>
 }

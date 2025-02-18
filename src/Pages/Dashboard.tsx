@@ -19,7 +19,7 @@ export function Dashboard() {
         return <SignIn/>;
     } 
 
-    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
     const { username, contents, refresh } = useContent();
 
     function onClose() {
@@ -34,7 +34,7 @@ export function Dashboard() {
         setModalOpen(true);
     }
 
-    const onDeleteContent = async (contentId:Number)=>{
+    const onDeleteContent = async (contentId:string)=>{
 
         await axios.delete(`${BACKEND_URL}/api/v1/content/${contentId}`,{
             headers: {

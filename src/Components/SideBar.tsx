@@ -6,7 +6,11 @@ import { Youtube } from "../Icons/Youtube";
 import { Profile } from "./Profile";
 import { SideBarItem } from "./SideBarItem";
 
-export function SideBar({username}) {
+interface SideBarProps {
+    username:string;
+}
+
+export function SideBar(props : SideBarProps) {
 
     const navigate = useNavigate();
 
@@ -30,7 +34,7 @@ export function SideBar({username}) {
                     </div>
                 </div>
                 <div className="flex items-center text-2xl capitalize justify-between border-t border-gray-200 py-4">
-                    <div className="flex items-center gap-2"><Profile/>{username}</div> 
+                    <div className="flex items-center gap-2"><Profile/>{props.username}</div> 
                     <div onClick={onSignOut} className="cursor-pointer"><LogoutIcon size="2xl" /></div> 
                 </div>
 

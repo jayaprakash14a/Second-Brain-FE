@@ -1,14 +1,14 @@
 export interface ContentsModel {
-    contents: [],
+    contents: Content[],
     shared: boolean,
-    onDelete: (contentId: Number) => void
+    onDelete: (_id: string) => void
 }
 
 export interface Content {
     title: string,
     link: string,
-    type: string,
-    id: Number
+    type: ContentType,
+    _id: string
 }
 
 export interface Contents {
@@ -20,3 +20,15 @@ export interface UserContent {
     contents: Content[];
     refresh: () => void;
 }
+
+export enum ContentType {
+    Youtube = "youtube",
+    Twitter = "twitter"
+}
+
+export interface ContentModal {
+    open : boolean,
+    onClose : ()=>void
+}
+
+// type ContentType = "twitter" | "youtube" | "text";
