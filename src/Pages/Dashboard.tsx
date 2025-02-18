@@ -85,7 +85,7 @@ export function Dashboard() {
                         </div>
                     </div>
                     <div className="dark:text-gray-100 w-full dark:bg-slate-800 px-8 py-4 rounded-md min-h-48">
-                        {!(contents.length>0) && <div className="w-full flex justify-center h-full items-center">Master!! please load some into brain.......</div>}
+                        {!(contents.length >0) && <div className="w-full flex justify-center h-full items-center">Master!! please load some into brain.......</div>}
                         <BrainContent contents={contents} shared={false} onDelete={onDeleteContent} />
                     </div>
 
