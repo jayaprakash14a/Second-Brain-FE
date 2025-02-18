@@ -14,7 +14,7 @@ export const BrainContent = (props : ContentsModel) => {
                 <Card key={_id + 'key'} link={link} title={title} type={type} shared={props.shared} onDelete={props.onDelete} _id={_id}/>)
             }
 
-            {JSON.stringify(props.contents.filter(({link, title, type})=> link != null && title != null && type != null))}
+            {/* {JSON.stringify(props.contents.filter(({link, title, type})=> link != null && title != null && type != null))} */}
         </div>
     </>
 }
