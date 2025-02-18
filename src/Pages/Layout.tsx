@@ -7,11 +7,14 @@ export const Layout = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        if(localStorage.getItem("token")){
-            navigate("/dashboard");
-        }else{
-            navigate("/signin");
+        if(!window.location.pathname.includes("share")){
+            if(localStorage.getItem("token")){
+                navigate("/dashboard");
+            }else{
+                navigate("/signin");
+            }
         }
+        
     },[])
 
     return <div className="dark">
