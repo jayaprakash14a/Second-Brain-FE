@@ -3,7 +3,6 @@ import { BrainContent } from "../Components/BrainContent";
 import { useSharedContent } from "../Hooks/useShareContent";
 
 
-
 export const SharedDashboard = () => {
 
     const { username, content } = useSharedContent();
