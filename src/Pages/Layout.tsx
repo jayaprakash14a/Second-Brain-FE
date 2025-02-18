@@ -7,7 +7,9 @@ export const Layout = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        if(!localStorage.getItem("token") && !window.location.pathname.includes("share")){
+        if(localStorage.getItem("token")){
+            navigate("/dashboard");
+        }else{
             navigate("/signin");
         }
     },[])
