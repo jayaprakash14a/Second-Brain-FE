@@ -7,15 +7,16 @@ import { Twitter } from "../Icons/Twitter";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { ContentModal, ContentType } from "../interface";
+import { LoadingIcon } from "../Icons/LoadingIcon";
 
 
-export function CreateContentModal(props : ContentModal) {
+export function CreateContentModal(props: ContentModal) {
 
     const modalRef = useRef<HTMLDivElement>(null);
-
+    const [loader, setLoader] = useState<boolean>(false)
     const titleRef = useRef<HTMLInputElement | null>(null);
     const linkRef = useRef<HTMLInputElement | null>(null);
-    const [type, setType ] = useState(ContentType.Youtube);
+    const [type, setType] = useState(ContentType.Youtube);
 
     useEffect(() => {
         function handleClickOutside(e: MouseEvent) {
@@ -32,25 +33,31 @@ export function CreateContentModal(props : ContentModal) {
         }
     }, [open, onclose])
 
-    async function addContent(){
+    async function addContent() {
 
         const title = titleRef.current?.value;
         const link = linkRef.current?.value;
-        
+        setLoader(true);
 
-        await axios.post(`${BACKEND_URL}/api/v1/content`,{
-            link,
-            type,
-            title
-        },{
-            headers:{
-                "Authorization": localStorage.getItem("token")
-            }
-        })
+        try {
+            await axios.post(`${BACKEND_URL}/api/v1/content`, {
+                link,
+                type,
+                title
+            }, {
+                headers: {
+                    "Authorization": localStorage.getItem("braintoken")
+                }
+            })
+        }
+        catch (e) {
+            setLoader(false);
+            alert("Adding content failed");
+        }
 
         alert("Content added");
         props.onClose();
-        
+
 
     }
 
@@ -63,19 +70,19 @@ export function CreateContentModal(props : ContentModal) {
                         <CrossIcon onClick={props.onClose} aria-label="Close Modal" />
                     </div>
                     <div className="py-2 flex flex-col gap-2">
-                        <CustomInput placeholder="Enter title"  ref={titleRef}/>
-                        <CustomInput placeholder="Provide link"  ref={linkRef} />
+                        <CustomInput placeholder="Enter title" ref={titleRef} />
+                        <CustomInput placeholder="Provide link" ref={linkRef} />
                         <div className="flex flex-col items-center my-4">
                             <div className="flex gap-8">
-                                <Button variant={`${(type === ContentType.Youtube) ? "Primary" : "Secondary"}`} text="Youtube" size="md" startIcon={<Youtube size="md"/>} onClick={()=>{
+                                <Button variant={`${(type === ContentType.Youtube) ? "Primary" : "Secondary"}`} text="Youtube" size="md" startIcon={<Youtube size="md" />} onClick={() => {
                                     setType(ContentType.Youtube)
                                 }} />
-                                <Button variant={`${(type === ContentType.Twitter) ? "Primary" : "Secondary"}`} text="Twitter" size="md" startIcon={<Twitter size="md"/>} onClick={()=>{
+                                <Button variant={`${(type === ContentType.Twitter) ? "Primary" : "Secondary"}`} text="Twitter" size="md" startIcon={<Twitter size="md" />} onClick={() => {
                                     setType(ContentType.Twitter)
                                 }} />
                             </div>
                         </div>
-                        <Button variant="Primary" text="Submit" size="md" onClick={addContent} />
+                        <Button variant="Primary" text="Submit" size="md" onClick={addContent} endIcon={<LoadingIcon size="md" loading={loader}/>} />
                     </div>
                 </div>
             </div>
