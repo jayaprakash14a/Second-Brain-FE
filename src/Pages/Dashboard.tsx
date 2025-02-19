@@ -9,7 +9,6 @@ import axios from "axios";
 import { BACKEND_URL } from "../config";
 import { BrainContent } from "../Components/BrainContent";
 import { useNavigate } from "react-router-dom";
-import { SignIn } from "./SignIn";
 
 export function Dashboard() {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -17,10 +16,11 @@ export function Dashboard() {
 
     const navigate = useNavigate();
 
-    if (!localStorage.getItem("token")) {
-        navigate("/signin");
-        return <SignIn />;
-    }
+    useEffect(()=>{
+        if (!localStorage.getItem("braintoken")) {
+            navigate("/signin");
+        }
+    },[])
 
     function onClose() {
         setModalOpen(false);
@@ -38,7 +38,7 @@ export function Dashboard() {
 
         await axios.delete(`${BACKEND_URL}/api/v1/content/${contentId}`, {
             headers: {
-                "Authorization": localStorage.getItem("token")
+                "Authorization": localStorage.getItem("braintoken")
             }
         });
         refresh();
@@ -52,7 +52,7 @@ export function Dashboard() {
             },
             {
                 headers: {
-                    "Authorization": localStorage.getItem("token")
+                    "Authorization": localStorage.getItem("braintoken")
                 }
             }
         );

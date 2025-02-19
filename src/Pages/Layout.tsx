@@ -8,7 +8,7 @@ export const Layout = () => {
 
     useEffect(()=>{
         if(!window.location.pathname.includes("share")){
-            if(localStorage.getItem("token")){
+            if(localStorage.getItem("braintoken")){
                 navigate("/dashboard");
             }else{
                 navigate("/signin");

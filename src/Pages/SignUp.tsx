@@ -19,7 +19,7 @@ export function SignUp(){
                 username,
                 password
         })
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("braintoken", response.data.token);
         navigate("/dashboard");
     }
 

@@ -8,7 +8,6 @@ export const SharedDashboard = () => {
 
     const { username, content, fetchDone } = useSharedContent();
 
-
     const ScreenMsg = () => {
         return <>
             {fetchDone ? !(content.length > 0) && <div className="w-full flex justify-center h-full items-center">Hey buddy!! {username}'s brain empty I mean second*</div>

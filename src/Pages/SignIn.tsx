@@ -24,7 +24,7 @@ export function SignIn() {
                 password
             });
             const jwt = response.data.token;
-            localStorage.setItem("token", jwt);
+            localStorage.setItem("braintoken", jwt);
             navigate("/dashboard");
         } catch (e) {
             setLoader(false);
