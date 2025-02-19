@@ -8,3 +8,4 @@ Built a Second Brain Web Application using React, Node.js, Express, and MongoDB,
 - **Backend:** Node.js, Express
 - **Other Tools:** Git, Vite
 
+Backend repo: https://github.com/jayaprakash14a/Second-Brain-BE
