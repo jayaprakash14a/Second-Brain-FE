@@ -13,8 +13,7 @@ export const Layout = () => {
             }else{
                 navigate("/signin");
             }
-        }
-        
+        }        
     },[])
 
     return <div className="dark">
