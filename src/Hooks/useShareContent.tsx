@@ -6,6 +6,7 @@ import axios from "axios";
 export const useSharedContent = ()=>{
     const [content, setContent] = useState([]);
     const [username, setUsername] = useState("");
+    const [fetchDone, setFetchDone] = useState<boolean>(false);
 
     const {brainid} = useParams();
 
@@ -15,10 +16,11 @@ export const useSharedContent = ()=>{
             console.log(response.data);
             setContent(response.data.content);
             setUsername(response.data.username);
+            setFetchDone(true);
         })
         
     },[])
 
-    return {username, content};
+    return {username, content, fetchDone};
 
 }

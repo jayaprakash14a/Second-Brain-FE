@@ -7,7 +7,8 @@ import { Content } from "../interface";
 
 export function useContent(){
     const [contents , setContents] = useState<Content[]>([]);
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState<string>("");
+    const [fetchDone, setFetchDone] = useState<boolean>(false)
     
     function refresh(){
         axios.get(`${BACKEND_URL}/api/v1/content`,{
@@ -17,12 +18,13 @@ export function useContent(){
         }).then((response)=>{
             setContents(response.data.content);
             setUsername(response.data.username);
+            setFetchDone(true);
         })
     }
     useEffect(()=>{
         refresh();
     },[])
 
-    return {username, contents, refresh};
+    return {username, contents, refresh, fetchDone};
 
 }

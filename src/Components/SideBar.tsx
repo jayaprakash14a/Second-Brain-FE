@@ -7,7 +7,8 @@ import { Profile } from "./Profile";
 import { SideBarItem } from "./SideBarItem";
 
 interface SideBarProps {
-    username:string;
+    username?:string;
+    shared?:boolean
 }
 
 export function SideBar(props : SideBarProps) {
@@ -21,7 +22,7 @@ export function SideBar(props : SideBarProps) {
     }
 
     return <>
-        <div className="h-screen bg-white dark:bg-slate-800 border-r border-gray-300 dark:border-gray-600 w-72 fixed left-0 top-0 p-4 dark:text-gray-100">
+        <div className="h-screen bg-white dark:bg-slate-800 border-r border-gray-300 dark:border-gray-600 w-80 fixed left-0 top-0 p-4 dark:text-gray-100">
             <div className="flex flex-col justify-between h-full">
                 <div>
                     <div className="flex text-2xl font-bold items-center gap-2 ">
@@ -33,10 +34,10 @@ export function SideBar(props : SideBarProps) {
                         <SideBarItem text="Videos" icon={<Youtube size="lg" />} />
                     </div>
                 </div>
-                <div className="flex items-center text-2xl capitalize justify-between border-t border-gray-200 py-4">
-                    <div className="flex items-center gap-2"><Profile/>{props.username}</div> 
+                { !props.shared && <div className="flex items-center text-2xl capitalize justify-between border-t border-gray-200 py-4 pr-8">
+                    <div className="flex items-center gap-2"><Profile/><p className="truncate">{props.username}</p></div> 
                     <div onClick={onSignOut} className="cursor-pointer"><LogoutIcon size="2xl" /></div> 
-                </div>
+                </div>}
 
             </div>
 

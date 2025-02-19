@@ -12,15 +12,15 @@ import { useNavigate } from "react-router-dom";
 import { SignIn } from "./SignIn";
 
 export function Dashboard() {
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const { username, contents, refresh, fetchDone } = useContent();
 
     const navigate = useNavigate();
-    if(!localStorage.getItem("token")){
-        navigate("/signin");
-        return <SignIn/>;
-    } 
 
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
-    const { username, contents, refresh } = useContent();
+    if (!localStorage.getItem("token")) {
+        navigate("/signin");
+        return <SignIn />;
+    }
 
     function onClose() {
         setModalOpen(false);
@@ -34,16 +34,15 @@ export function Dashboard() {
         setModalOpen(true);
     }
 
-    const onDeleteContent = async (contentId:string)=>{
+    const onDeleteContent = async (contentId: string) => {
 
-        await axios.delete(`${BACKEND_URL}/api/v1/content/${contentId}`,{
+        await axios.delete(`${BACKEND_URL}/api/v1/content/${contentId}`, {
             headers: {
                 "Authorization": localStorage.getItem("token")
             }
         });
         refresh();
     }
-
 
     async function onShareBrain() {
 
@@ -64,16 +63,22 @@ export function Dashboard() {
 
         await navigator.clipboard.writeText(shareURL);
         alert(`Shareable link copied to clipboard.`);
-
     }
 
-
+    const ScreenMsg = () => {
+        return <>
+            {fetchDone ? !(contents.length > 0) && <div className="w-full flex justify-center h-full items-center">Hey buddy!! Please load some into brain.......</div>
+                : 
+                <div className="w-full flex justify-center h-full items-center">Hey buddy!! Please wait until we load.......</div>
+                }
+        </>
+    }
 
     return (
         <>
             <div>
-                <SideBar username={username}/>
-                <div className="p-4 flex flex-col gap-4 ml-72 min-h-screen bg-gray-200 dark:bg-gray-950">
+                <SideBar username={username} />
+                <div className="p-4 flex flex-col gap-4 ml-80 min-h-screen bg-gray-200 dark:bg-gray-950">
                     <CreateContentModal open={modalOpen} onClose={onClose} />
                     <div className="flex justify-between items-center w-full dark:bg-slate-800 px-8 py-4 rounded-md">
                         <div className="dark:text-gray-100 text-2xl font-bold px-4">
@@ -85,7 +90,7 @@ export function Dashboard() {
                         </div>
                     </div>
                     <div className="dark:text-gray-100 w-full dark:bg-slate-800 px-8 py-4 rounded-md min-h-48">
-                        {!(contents.length >0) && <div className="w-full flex justify-center h-full items-center">Master!! please load some into brain.......</div>}
+                        <ScreenMsg />
                         <BrainContent contents={contents} shared={false} onDelete={onDeleteContent} />
                     </div>
 
