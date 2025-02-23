@@ -1,6 +1,6 @@
 
 import { BrainContent } from "../Components/BrainContent";
-import { SideBar } from "../Components/SideBar";
+import { PageHeader } from "../Components/PageHeader";
 import { useSharedContent } from "../Hooks/useShareContent";
 
 
@@ -19,9 +19,10 @@ export const SharedDashboard = () => {
 
     return <>
         <div className="flex">
-            <SideBar shared={true} />
-            <div className="p-4 flex flex-col gap-4 ml-80 min-h-screen bg-gray-200 dark:bg-gray-950 w-full">
-                <div className="text-3xl capitalize font-bold dark:text-gray-100 w-full dark:bg-slate-800 px-8 py-4 rounded-md">
+            {/* <SideBar shared={true} /> */}
+            <div className="p-4 flex flex-col gap-4 min-h-screen bg-gray-200 dark:bg-gray-950 w-full">
+                <PageHeader username={username} shared={true} />
+                <div className="text-3xl capitalize font-bold dark:text-gray-100 w-full dark:bg-slate-800 px-8 py-4 rounded-md flex justify-center lg:justify-start">
                     You are looking at {username} second brain
                 </div>
                 <div className="dark:text-gray-100 w-full dark:bg-slate-800 px-8 py-4 rounded-md min-h-48">

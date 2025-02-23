@@ -5,7 +5,7 @@ import { Card } from "./Card"
 export const BrainContent = (props : ContentsModel) => {
 
     return <>
-        <div className="flex gap-4 flex-wrap">
+        <div className="flex gap-4 flex-wrap justify-center lg:justify-start">
             {/* <Card link='https://x.com/Kishoreddyk/status/1890427442872951042' type='twitter' title='Praboss'  /> */}
     
                             {/* <Card link='https://www.youtube.com/watch?v=UaGJdSUA_RM' type='youtube' title='Praboss'  /> */}

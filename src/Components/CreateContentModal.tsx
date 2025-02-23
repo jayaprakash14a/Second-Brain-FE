@@ -57,17 +57,17 @@ export function CreateContentModal(props: ContentModal) {
 
         alert("Content added");
         props.onClose();
-
-
     }
 
 
-    return <div>
+    return <>
         {props.open &&
-            <div className="w-screen h-screen bg-slate-700-opaque dark:bg-slate-800-opaque fixed top-0 left-0 flex justify-center items-center z-2">
-                <div className="py-4 px-8 w-3/12 flex flex-col justify-center h-fit rounded-md bg-gray-200 dark:bg-slate-950 dark:text-gray-100 gap-4" ref={modalRef} role="dialog" aria-modal="true">
+            <div className="w-screen h-screen bg-slate-700-opaque dark:bg-slate-800-opaque fixed top-0 left-0 flex justify-center items-center z-2" onClick={props.onClose}>
+                <div className="py-4 px-8 w-10/12 md:w-6/12 lg:w-5/12 flex flex-col justify-center h-fit rounded-md bg-gray-200 dark:bg-slate-950 dark:text-gray-100 gap-4" ref={modalRef} role="dialog" aria-modal="true" onClick={(e)=>{
+                    e.stopPropagation();
+                }}>
                     <div className="flex justify-end">
-                        <CrossIcon onClick={props.onClose} aria-label="Close Modal" />
+                        <CrossIcon onClick={props.onClose} aria-label="Close Modal" size="lg" />
                     </div>
                     <div className="py-2 flex flex-col gap-2">
                         <CustomInput placeholder="Enter title" ref={titleRef} />
@@ -87,7 +87,7 @@ export function CreateContentModal(props: ContentModal) {
                 </div>
             </div>
         }
-    </div>
+    </>
 
 }
 

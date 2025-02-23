@@ -22,7 +22,7 @@ export function SideBar(props : SideBarProps) {
     }
 
     return <>
-        <div className="h-screen bg-white dark:bg-slate-800 border-r border-gray-300 dark:border-gray-600 w-80 fixed left-0 top-0 p-4 dark:text-gray-100">
+        <div className="h-screen bg-white dark:bg-slate-800 border-r border-gray-300 dark:border-gray-600 hidden md:block md:w-80 p-4 dark:text-gray-100">
             <div className="flex flex-col justify-between h-full">
                 <div>
                     <div className="flex text-2xl font-bold items-center gap-2 ">
