@@ -26,10 +26,13 @@ export function SignUp(){
     return <>
         <div className="h-screen w-screen bg-gray-200 dark:bg-gray-600 flex justify-center items-center">
             <div className="bg-white rounded-lg p-8 min-w-48 flex flex-col gap-4 items-center dark:bg-slate-950 dark:text-gray-200 text-xl">
-                WELCOME
+                Second Brain
                 <CustomInput placeholder="Username" ref={usernameRef} />
                 <CustomInput placeholder="Password" ref={passwordRef}/>
                 <Button text="SignUp"  variant="Primary" size="md" onClick={signup} fullWidth={true} loading={true}/>
+                <a onClick={() => {
+                    navigate("/signin");
+                }} className="cursor-pointer text-yellow-700 underline">Existing user?</a>
             </div>
         </div>
     </>
