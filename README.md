@@ -9,4 +9,5 @@ Built a Second Brain Web Application using React, Node.js, Express, and MongoDB,
 - **Other Tools:** Git, Vite
 
 Backend repo: https://github.com/jayaprakash14a/Second-Brain-BE
+
 URL: https://spectacular-praline-8b3208.netlify.app/dashboard
